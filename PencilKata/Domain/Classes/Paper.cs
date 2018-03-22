@@ -1,10 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Domain.Classes
+﻿namespace Domain.Classes
 {
-    class Paper
+    public class Paper
     {
+        /// <summary>
+        /// current text on paper
+        /// </summary>
+        public string Text { get; set; }
+
+        public Paper()
+        {
+
+        }
     }
 }

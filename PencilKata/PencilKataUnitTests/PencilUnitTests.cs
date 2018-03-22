@@ -1,10 +1,9 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace PencilKataUnitTests
 {
     [TestClass]
-    public class UnitTest1
+    public class PencilUnitTests
     {
         [TestMethod]
         public void TestMethod1()
