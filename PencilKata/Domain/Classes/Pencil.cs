@@ -33,5 +33,16 @@
         {
             return paper;
         }
+
+        /// <summary>
+        /// Adds a new word to first blank space on paper
+        /// </summary>
+        /// <param name="word">the word to be added</param>
+        /// <param name="paper">the paper to be written to</param>
+        /// <returns>the modified paper</returns>
+        public Paper Edit(string word, Paper paper)
+        {
+            return paper;
+        }
     }
 }
