@@ -38,7 +38,8 @@ namespace PencilKataUnitTests
         public void TestPencilWritesSpacesIfDurabilityIsZero()
         {
             // Arrange
-            pencil.CurrentDurability = 15;
+            // Durabilty accounting for 1 upper case letter
+            pencil.CurrentDurability = 16;
 
             // Act
             paper = pencil.Write(genericTestSentence, paper);
@@ -51,7 +52,8 @@ namespace PencilKataUnitTests
         public void TestPencilLosesDurabilityAfterUse()
         {
             // Arrange
-            int decrementedDurability = pencilDurability - genericTestSentence.Count(character => character != ' ');
+            // point loss for 29 letters 1 uppercase letter
+            int decrementedDurability = 30;
 
             // Act
             pencil.Write(genericTestSentence, paper);

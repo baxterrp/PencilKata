@@ -64,7 +64,7 @@ namespace Domain.Classes
         }
 
         /// <summary>
-        /// 
+        /// Constructs sentence accounting for pencil degregation
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
