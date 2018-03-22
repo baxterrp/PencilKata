@@ -57,7 +57,7 @@ namespace PencilKataUnitTests
         public void TestPencilLosesDurabilityAfterUse()
         {
             // Arrange
-            int decrementedDurability = pencilDurability - genericTestSentence.Count(char.IsLetter);
+            int decrementedDurability = pencilDurability - genericTestSentence.Count(character => character != ' ');
 
             // Act
             pencil.Write(genericTestSentence, paper);

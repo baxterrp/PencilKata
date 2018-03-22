@@ -1,4 +1,6 @@
-﻿namespace Domain.Classes
+﻿using System.Linq;
+
+namespace Domain.Classes
 {
     public class Pencil
     {
@@ -20,6 +22,7 @@
         public Pencil(int maxDurability, int length)
         {
             MaxDurability = maxDurability;
+            CurrentDurability = MaxDurability;
             Length = length;
         }
 
@@ -32,6 +35,8 @@
         public Paper Write(string sentence, Paper paper)
         {
             paper.Text += sentence;
+            DegradePencilPoint(sentence);
+
             return paper;
         }
 
@@ -44,6 +49,15 @@
         public Paper Edit(string word, Paper paper)
         {
             return paper;
+        }
+
+        /// <summary>
+        /// Lowers the point of a pencil upon use
+        /// </summary>
+        /// <param name="sentence">the sentence being written</param>
+        private void DegradePencilPoint(string sentence)
+        {
+            CurrentDurability -= sentence.Count(character => !char.IsWhiteSpace(character));
         }
     }
 }
