@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.27130.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PencilKata", "PencilKata\PencilKata.csproj", "{D977792B-32B5-47AC-8C17-40F5DB1BA44F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PencilKataUnitTests", "PencilKataUnitTests\PencilKataUnitTests.csproj", "{D887F7D5-777B-4158-A7AE-864214C320CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{69E1EE24-B0DD-45FA-9B36-79C6EB92F99F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{D977792B-32B5-47AC-8C17-40F5DB1BA44F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D977792B-32B5-47AC-8C17-40F5DB1BA44F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D977792B-32B5-47AC-8C17-40F5DB1BA44F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D887F7D5-777B-4158-A7AE-864214C320CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D887F7D5-777B-4158-A7AE-864214C320CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D887F7D5-777B-4158-A7AE-864214C320CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D887F7D5-777B-4158-A7AE-864214C320CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69E1EE24-B0DD-45FA-9B36-79C6EB92F99F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69E1EE24-B0DD-45FA-9B36-79C6EB92F99F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69E1EE24-B0DD-45FA-9B36-79C6EB92F99F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69E1EE24-B0DD-45FA-9B36-79C6EB92F99F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
