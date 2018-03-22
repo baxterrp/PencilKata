@@ -1,5 +1,6 @@
 ﻿using Domain.Classes;
 using NUnit.Framework;
+using System.Linq;
 
 namespace PencilKataUnitTests
 {
@@ -26,7 +27,7 @@ namespace PencilKataUnitTests
             // Arrange
 
             // Act
-            paper = pencil.Write("This is a test sentence", paper);
+            paper = pencil.Write(genericTestSentence, paper);
 
             // Assert
             Assert.AreEqual(genericTestSentence, paper.Text, "The text of the paper should match the constant testSentence");
@@ -56,10 +57,13 @@ namespace PencilKataUnitTests
         public void TestPencilLosesDurabilityAfterUse()
         {
             // Arrange
+            int decrementedDurability = pencilDurability - genericTestSentence.Count(char.IsLetter);
 
             // Act
+            pencil.Write(genericTestSentence, paper);
 
             // Assert
+            Assert.AreEqual(decrementedDurability, pencil.CurrentDurability, "Current durability should be one less than original durability");
         }
 
         [Test]

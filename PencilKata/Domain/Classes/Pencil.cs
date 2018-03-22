@@ -31,6 +31,7 @@
         /// <returns>the paper passed in with new characters added</returns>
         public Paper Write(string sentence, Paper paper)
         {
+            paper.Text += sentence;
             return paper;
         }
 
