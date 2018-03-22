@@ -41,6 +41,14 @@ namespace Domain.Classes
         }
 
         /// <summary>
+        /// Returns durability of pencil back to maximum value
+        /// </summary>
+        public void Sharpen()
+        {
+            CurrentDurability = Length != 0 ? MaxDurability : CurrentDurability;
+        }
+
+        /// <summary>
         /// Adds a new word to first blank space on paper
         /// </summary>
         /// <param name="word">the word to be added</param>
@@ -59,5 +67,6 @@ namespace Domain.Classes
         {
             CurrentDurability -= sentence.Count(character => !char.IsWhiteSpace(character));
         }
+
     }
 }

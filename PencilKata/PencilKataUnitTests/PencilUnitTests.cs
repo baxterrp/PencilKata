@@ -72,18 +72,24 @@ namespace PencilKataUnitTests
             // Arrange
 
             // Act
+            pencil.Write(genericTestSentence, paper);
+            pencil.Sharpen();
 
             // Assert
+            Assert.AreEqual(pencil.MaxDurability, pencil.CurrentDurability);
         }
 
         [Test]
         public void TestPencilLosesLengthAfterSharpening()
         {
             // Arrange
+            int initialPencilLength = pencil.Length;
 
             // Act
+            pencil.Sharpen();
 
             // Assert
+            Assert.AreEqual(initialPencilLength - 1, pencil.Length);
         }
 
         [Test]
