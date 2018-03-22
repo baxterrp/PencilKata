@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Text;
 
 namespace Domain.Classes
 {
@@ -34,18 +35,21 @@ namespace Domain.Classes
         /// <returns>the paper passed in with new characters added</returns>
         public Paper Write(string sentence, Paper paper)
         {
-            paper.Text += sentence;
-            DegradePencilPoint(sentence);
+            paper.Text += BuildSentence(sentence);
 
             return paper;
         }
 
         /// <summary>
-        /// Returns durability of pencil back to maximum value
+        /// Sets durability of pencil back to maximum value
         /// </summary>
         public void Sharpen()
         {
-            CurrentDurability = Length != 0 ? MaxDurability : CurrentDurability;
+            if(Length > decimal.Zero)
+            {
+                Length--;
+            }
+            CurrentDurability = Length != decimal.Zero ? MaxDurability : CurrentDurability;
         }
 
         /// <summary>
@@ -60,13 +64,30 @@ namespace Domain.Classes
         }
 
         /// <summary>
-        /// Lowers the point of a pencil upon use
+        /// 
         /// </summary>
-        /// <param name="sentence">the sentence being written</param>
-        private void DegradePencilPoint(string sentence)
+        /// <param name="input"></param>
+        /// <returns></returns>
+        private string BuildSentence(string input)
         {
-            CurrentDurability -= sentence.Count(character => !char.IsWhiteSpace(character));
-        }
+            StringBuilder sentence = new StringBuilder(input);
 
+            for (int i = 0; i < sentence.Length; i++)
+            {
+                if (!char.IsWhiteSpace(sentence[i]))
+                {
+                    if (CurrentDurability > decimal.Zero)
+                    {
+                        CurrentDurability--;
+                    }
+                    else
+                    {
+                        sentence[i] = ' ';
+                    }
+                }
+            }
+
+            return sentence.ToString();
+        }
     }
 }

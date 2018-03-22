@@ -9,6 +9,7 @@ namespace PencilKataUnitTests
         private Pencil pencil;
         private Paper paper;
         private const string genericTestSentence = "This is a test sentence";
+        private const string testSentenceDullPencil = "This is a test sent    ";
         private const string testSentenceWithSpace = "This is a      sentence";
         private const string testSentenceWithSpecialCharacters = "This is a rober@entence";
         private const int pencilDurability = 50;
@@ -37,20 +38,13 @@ namespace PencilKataUnitTests
         public void TestPencilWritesSpacesIfDurabilityIsZero()
         {
             // Arrange
+            pencil.CurrentDurability = 15;
 
             // Act
+            paper = pencil.Write(genericTestSentence, paper);
 
             // Assert
-        }
-
-        [Test]
-        public void TestPencilWritesSpecialCharacterIfNoFreeWhiteSpace()
-        {
-            // Arrange
-
-            // Act
-
-            // Assert
+            Assert.AreEqual(testSentenceDullPencil, paper.Text);
         }
 
         [Test]
@@ -83,17 +77,26 @@ namespace PencilKataUnitTests
         public void TestPencilLosesLengthAfterSharpening()
         {
             // Arrange
-            int initialPencilLength = pencil.Length;
 
             // Act
             pencil.Sharpen();
 
             // Assert
-            Assert.AreEqual(initialPencilLength - 1, pencil.Length);
+            Assert.AreEqual(pencilLength - 1, pencil.Length);
         }
 
         [Test]
         public void TestEditAddsToFirstBlankSpaceOnPaper()
+        {
+            // Arrange
+
+            // Act
+
+            // Assert
+        }
+
+        [Test]
+        public void TestPencilWritesSpecialCharacterIfNoFreeWhiteSpace()
         {
             // Arrange
 
