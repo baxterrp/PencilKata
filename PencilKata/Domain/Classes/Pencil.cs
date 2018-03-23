@@ -66,15 +66,13 @@ namespace Domain.Classes
 
             for (var i = firstDoubleSpace; i < length; i++)
             {
-                sentence[i] = word[wordCounter];
+                sentence[i] = char.IsWhiteSpace(sentence[i]) ? word[wordCounter] : '@';
                 wordCounter++;
             }
             paper.Text = sentence.ToString();
 
             return paper;
         }
-
-
 
         /// <summary>
         /// Constructs sentence accounting for pencil degregation
