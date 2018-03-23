@@ -1,4 +1,6 @@
-﻿namespace Domain.Classes
+﻿using System.Text;
+
+namespace Domain.Classes
 {
     public class Eraser
     {
@@ -20,6 +22,16 @@
         /// <returns>the paper written on after erasing word</returns>
         public Paper Erase(string word, Paper paper)
         {
+            int firstIndexOfWord = paper.Text.IndexOf(word);
+            if(firstIndexOfWord != -1)
+            {
+                int length = firstIndexOfWord + word.Length;
+                StringBuilder sentence = new StringBuilder(paper.Text);
+                for (var i = firstIndexOfWord; i < length; i++) {
+                    sentence[i] = ' ';
+                }
+                paper.Text = sentence.ToString();
+            }
             return paper; 
         }
     }
