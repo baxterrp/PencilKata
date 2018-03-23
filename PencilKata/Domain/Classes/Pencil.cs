@@ -78,7 +78,14 @@ namespace Domain.Classes
                 {
                     if (CurrentDurability > decimal.Zero)
                     {
-                        CurrentDurability--;
+                        if (char.IsUpper(sentence[i]))
+                        {
+                            CurrentDurability -= 2;
+                        }
+                        else
+                        {
+                            CurrentDurability--;
+                        }
                     }
                     else
                     {
