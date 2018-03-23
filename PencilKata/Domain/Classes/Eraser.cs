@@ -29,6 +29,7 @@ namespace Domain.Classes
                 StringBuilder sentence = new StringBuilder(paper.Text);
                 for (var i = firstIndexOfWord; i < length; i++) {
                     sentence[i] = ' ';
+                    Durability--;
                 }
                 paper.Text = sentence.ToString();
             }

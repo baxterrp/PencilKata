@@ -12,6 +12,7 @@ namespace PencilKataUnitTests
         private Pencil pencil;
         private const string testSentence = "This is a test sentence";
         private const string testSentenceWithWhiteSpace = "This is a      sentence";
+        private const string testWord = "test";
         private const int pencilDurability = 50;
         private const int pencilLength = 10;
         private const int eraserDurability = 5;
@@ -31,7 +32,7 @@ namespace PencilKataUnitTests
 
             // Act
             paper = pencil.Write(testSentence, paper);
-            paper = eraser.Erase("test", paper);
+            paper = eraser.Erase(testWord, paper);
 
             // Assert
             Assert.AreEqual(testSentenceWithWhiteSpace, paper.Text);
@@ -44,20 +45,24 @@ namespace PencilKataUnitTests
 
             // Act
             paper = pencil.Write(testSentence, paper);
-            paper = eraser.Erase("test", paper);
+            paper = eraser.Erase(testWord, paper);
 
             // Assert
-            Assert.AreEqual(eraserDurability - 1, eraser.Durability);
+            Assert.AreEqual(eraserDurability - testWord.Length, eraser.Durability);
         }
 
         [Test]
         public void TestEraserDoesNotEraseIfDurabilityIsZero()
         {
             // Arrange
+            eraser.Durability = 0;
 
             // Act
+            paper = pencil.Write(testSentence, paper);
+            paper = eraser.Erase(testWord, paper);
 
             // Assert
+            Assert.AreEqual(testSentence, paper.Text);
         }
     }
 }
