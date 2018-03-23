@@ -61,9 +61,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Domain\Domain.csproj">
+    <ProjectReference Include="..\Domain\PencilKata.Domain.csproj">
       <Project>{69e1ee24-b0dd-45fa-9b36-79c6eb92f99f}</Project>
-      <Name>Domain</Name>
+      <Name>PencilKata.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

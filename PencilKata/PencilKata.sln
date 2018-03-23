@@ -5,9 +5,9 @@ VisualStudioVersion = 15.0.27130.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PencilKata", "PencilKata\PencilKata.csproj", "{D977792B-32B5-47AC-8C17-40F5DB1BA44F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PencilKataUnitTests", "PencilKataUnitTests\PencilKataUnitTests.csproj", "{D887F7D5-777B-4158-A7AE-864214C320CE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PencilKata.UnitTests", "PencilKataUnitTests\PencilKata.UnitTests.csproj", "{D887F7D5-777B-4158-A7AE-864214C320CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{69E1EE24-B0DD-45FA-9B36-79C6EB92F99F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PencilKata.Domain", "Domain\PencilKata.Domain.csproj", "{69E1EE24-B0DD-45FA-9B36-79C6EB92F99F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
