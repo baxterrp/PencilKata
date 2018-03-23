@@ -43,8 +43,11 @@ namespace PencilKataUnitTests
             // Arrange
 
             // Act
+            paper = pencil.Write(testSentence, paper);
+            paper = eraser.Erase("test", paper);
 
             // Assert
+            Assert.AreEqual(eraserDurability - 1, eraser.Durability);
         }
 
         [Test]

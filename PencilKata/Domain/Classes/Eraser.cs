@@ -7,7 +7,7 @@ namespace Domain.Classes
         /// <summary>
         /// uses left of eraser
         /// </summary>
-        private int Durability { get; set; }
+        public int Durability { get; set; }
 
         public Eraser(int durability)
         {
