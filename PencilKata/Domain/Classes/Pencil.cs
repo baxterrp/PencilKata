@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Text;
+﻿using System.Text;
 
 namespace Domain.Classes
 {
@@ -60,14 +59,28 @@ namespace Domain.Classes
         /// <returns>the modified paper</returns>
         public Paper Edit(string word, Paper paper)
         {
+            int firstDoubleSpace = paper.Text.IndexOf("  ") + 1;
+            int length = firstDoubleSpace + word.Length;
+            int wordCounter = 0;
+            StringBuilder sentence = new StringBuilder(paper.Text);
+
+            for (var i = firstDoubleSpace; i < length; i++)
+            {
+                sentence[i] = word[wordCounter];
+                wordCounter++;
+            }
+            paper.Text = sentence.ToString();
+
             return paper;
         }
+
+
 
         /// <summary>
         /// Constructs sentence accounting for pencil degregation
         /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
+        /// <param name="input">sentence to be modified</param>
+        /// <returns>the modified sentence</returns>
         private string BuildSentence(string input)
         {
             StringBuilder sentence = new StringBuilder(input);

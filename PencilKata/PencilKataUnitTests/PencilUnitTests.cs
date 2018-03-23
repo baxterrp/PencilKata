@@ -35,20 +35,6 @@ namespace PencilKataUnitTests
         }
 
         [Test]
-        public void TestPencilWritesSpacesIfDurabilityIsZero()
-        {
-            // Arrange
-            // Durabilty accounting for 1 upper case letter
-            pencil.CurrentDurability = 16;
-
-            // Act
-            paper = pencil.Write(genericTestSentence, paper);
-
-            // Assert
-            Assert.AreEqual(testSentenceDullPencil, paper.Text);
-        }
-
-        [Test]
         public void TestPencilLosesDurabilityAfterUse()
         {
             // Arrange
@@ -60,6 +46,20 @@ namespace PencilKataUnitTests
 
             // Assert
             Assert.AreEqual(decrementedDurability, pencil.CurrentDurability, "Current durability should be one less than original durability");
+        }
+
+        [Test]
+        public void TestPencilWritesSpacesIfDurabilityIsZero()
+        {
+            // Arrange
+            // Durabilty accounting for 1 upper case letter
+            pencil.CurrentDurability = 16;
+
+            // Act
+            paper = pencil.Write(genericTestSentence, paper);
+
+            // Assert
+            Assert.AreEqual(testSentenceDullPencil, paper.Text);
         }
 
         [Test]
@@ -93,8 +93,11 @@ namespace PencilKataUnitTests
             // Arrange
 
             // Act
+            paper = pencil.Write(testSentenceWithSpace, paper);
+            paper = pencil.Edit("test", paper);
 
             // Assert
+            Assert.AreEqual(genericTestSentence, paper.Text);
         }
 
         [Test]
