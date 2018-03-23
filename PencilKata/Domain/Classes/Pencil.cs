@@ -31,12 +31,10 @@ namespace Domain.Classes
         /// </summary>
         /// <param name="sentence">the sentence entered by the user</param>
         /// <param name="paper">the paper to be written on</param>
-        /// <returns>the paper passed in with new characters added</returns>
-        public Paper Write(string sentence, Paper paper)
+        /// <returns>the text passed in with new characters added</returns>
+        public string Write(string sentence)
         {
-            paper.Text += BuildSentence(sentence);
-
-            return paper;
+            return BuildSentence(sentence);
         }
 
         /// <summary>
@@ -56,22 +54,20 @@ namespace Domain.Classes
         /// </summary>
         /// <param name="word">the word to be added</param>
         /// <param name="paper">the paper to be written to</param>
-        /// <returns>the modified paper</returns>
-        public Paper Edit(string word, Paper paper)
+        /// <returns>the modified text</returns>
+        public string Edit(string word, string input)
         {
-            int firstDoubleSpace = paper.Text.IndexOf("  ") + 1;
+            int firstDoubleSpace = input.IndexOf("  ") + 1;
             int length = firstDoubleSpace + word.Length;
             int wordCounter = 0;
-            StringBuilder sentence = new StringBuilder(paper.Text);
+            StringBuilder sentence = new StringBuilder(input);
 
             for (var i = firstDoubleSpace; i < length; i++)
             {
                 sentence[i] = char.IsWhiteSpace(sentence[i]) ? word[wordCounter] : '@';
                 wordCounter++;
             }
-            paper.Text = sentence.ToString();
-
-            return paper;
+            return sentence.ToString();
         }
 
         /// <summary>

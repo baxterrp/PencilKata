@@ -25,10 +25,8 @@ namespace PencilKataUnitTests
         [Test]
         public void TestPencilWritesToPaper()
         {
-            // Arrange
-
             // Act
-            paper = pencil.Write(genericTestSentence, paper);
+            paper.Text += pencil.Write(genericTestSentence);
 
             // Assert
             Assert.AreEqual(genericTestSentence, paper.Text, "The text of the paper should match the constant testSentence");
@@ -37,11 +35,9 @@ namespace PencilKataUnitTests
         [Test]
         public void TestPencilWriteAllowsConcatentation()
         {
-            // Arrange
-
             // Act
-            paper = pencil.Write(genericTestSentence, paper);
-            paper = pencil.Write(testSentenceConcatonated, paper);
+            paper.Text += pencil.Write(genericTestSentence);
+            paper.Text += pencil.Write(testSentenceConcatonated);
 
             // Assert
             Assert.AreEqual(genericTestSentence + testSentenceConcatonated, paper.Text, "The text of the paper should match the constant testSentence + testSentenceConcatonated");
@@ -55,7 +51,7 @@ namespace PencilKataUnitTests
             int decrementedDurability = 30;
 
             // Act
-            pencil.Write(genericTestSentence, paper);
+            pencil.Write(genericTestSentence);
 
             // Assert
             Assert.AreEqual(decrementedDurability, pencil.CurrentDurability, "Current durability should be one less than original durability");
@@ -69,7 +65,7 @@ namespace PencilKataUnitTests
             pencil.CurrentDurability = 16;
 
             // Act
-            paper = pencil.Write(genericTestSentence, paper);
+            paper.Text = pencil.Write(genericTestSentence);
 
             // Assert
             Assert.AreEqual(testSentenceDullPencil, paper.Text);
@@ -78,10 +74,8 @@ namespace PencilKataUnitTests
         [Test]
         public void TestPencilRegainsDurabilityAfterSharpening()
         {
-            // Arrange
-
             // Act
-            pencil.Write(genericTestSentence, paper);
+            pencil.Write(genericTestSentence);
             pencil.Sharpen();
 
             // Assert
@@ -91,8 +85,6 @@ namespace PencilKataUnitTests
         [Test]
         public void TestPencilLosesLengthAfterSharpening()
         {
-            // Arrange
-
             // Act
             pencil.Sharpen();
 
@@ -103,11 +95,9 @@ namespace PencilKataUnitTests
         [Test]
         public void TestEditAddsToFirstBlankSpaceOnPaper()
         {
-            // Arrange
-
             // Act
-            paper = pencil.Write(testSentenceWithSpace, paper);
-            paper = pencil.Edit("test", paper);
+            paper.Text += pencil.Write(testSentenceWithSpace);
+            paper.Text = pencil.Edit("test", paper.Text);
 
             // Assert
             Assert.AreEqual(genericTestSentence, paper.Text);
@@ -116,11 +106,9 @@ namespace PencilKataUnitTests
         [Test]
         public void TestPencilWritesSpecialCharacterIfNoFreeWhiteSpace()
         {
-            // Arrange
-
             // Act
-            paper = pencil.Write(testSentenceWithSpace, paper);
-            paper = pencil.Edit("robert", paper);
+            paper.Text += pencil.Write(testSentenceWithSpace);
+            paper.Text = pencil.Edit("robert", paper.Text);
 
             // Assert
             Assert.AreEqual(testSentenceWithSpecialCharacters, paper.Text);

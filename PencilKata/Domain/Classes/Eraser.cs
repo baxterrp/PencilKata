@@ -19,16 +19,16 @@ namespace Domain.Classes
         /// </summary>
         /// <param name="word">the word to be removed</param>
         /// <param name="paper">the paper written on</param>
-        /// <returns>the paper written on after erasing word</returns>
-        public Paper Erase(string word, Paper paper)
+        /// <returns>the sentence after erasing word</returns>
+        public string Erase(string word, string input)
         {
             if (Durability > 0)
             {
-                int firstIndexOfWord = paper.Text.IndexOf(word);
+                int firstIndexOfWord = input.IndexOf(word);
                 if (firstIndexOfWord != -1)
                 {
                     int length = firstIndexOfWord + word.Length;
-                    StringBuilder sentence = new StringBuilder(paper.Text);
+                    StringBuilder sentence = new StringBuilder(input);
                     for (var i = firstIndexOfWord; i < length; i++)
                     {
                         if (Durability > 0)
@@ -41,10 +41,10 @@ namespace Domain.Classes
                             i = length;
                         }
                     }
-                    paper.Text = sentence.ToString();
+                    return sentence.ToString();
                 }
             }
-            return paper; 
+            return input; 
         }
     }
 }

@@ -28,11 +28,9 @@ namespace PencilKataUnitTests
         [Test]
         public void TestEraserRemovesWordAsEntered()
         {
-            // Arrange
-
             // Act
-            paper = pencil.Write(testSentence, paper);
-            paper = eraser.Erase(testWord, paper);
+            paper.Text += pencil.Write(testSentence);
+            paper.Text = eraser.Erase(testWord, paper.Text);
 
             // Assert
             Assert.AreEqual(testSentenceWithWhiteSpace, paper.Text);
@@ -41,11 +39,9 @@ namespace PencilKataUnitTests
         [Test]
         public void TestEraserLosesDurabilityAfterEachUse()
         {
-            // Arrange
-
             // Act
-            paper = pencil.Write(testSentence, paper);
-            paper = eraser.Erase(testWord, paper);
+            paper.Text += pencil.Write(testSentence);
+            paper.Text = eraser.Erase(testWord, paper.Text);
 
             // Assert
             Assert.AreEqual(eraserDurability - testWord.Length, eraser.Durability);
@@ -58,8 +54,8 @@ namespace PencilKataUnitTests
             eraser.Durability = 0;
 
             // Act
-            paper = pencil.Write(testSentence, paper);
-            paper = eraser.Erase(testWord, paper);
+            paper.Text += pencil.Write(testSentence);
+            paper.Text = eraser.Erase(testWord, paper.Text);
 
             // Assert
             Assert.AreEqual(testSentence, paper.Text);
