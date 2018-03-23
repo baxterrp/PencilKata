@@ -1,6 +1,5 @@
 ﻿using Domain.Classes;
 using NUnit.Framework;
-using System.Linq;
 
 namespace PencilKataUnitTests
 {
@@ -106,8 +105,11 @@ namespace PencilKataUnitTests
             // Arrange
 
             // Act
+            paper = pencil.Write(testSentenceWithSpace, paper);
+            paper = pencil.Edit("robert", paper);
 
             // Assert
+            Assert.AreEqual(testSentenceWithSpecialCharacters, paper.Text);
         }
     }
 }
