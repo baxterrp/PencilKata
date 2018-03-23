@@ -22,16 +22,27 @@ namespace Domain.Classes
         /// <returns>the paper written on after erasing word</returns>
         public Paper Erase(string word, Paper paper)
         {
-            int firstIndexOfWord = paper.Text.IndexOf(word);
-            if(firstIndexOfWord != -1)
+            if (Durability > 0)
             {
-                int length = firstIndexOfWord + word.Length;
-                StringBuilder sentence = new StringBuilder(paper.Text);
-                for (var i = firstIndexOfWord; i < length; i++) {
-                    sentence[i] = ' ';
-                    Durability--;
+                int firstIndexOfWord = paper.Text.IndexOf(word);
+                if (firstIndexOfWord != -1)
+                {
+                    int length = firstIndexOfWord + word.Length;
+                    StringBuilder sentence = new StringBuilder(paper.Text);
+                    for (var i = firstIndexOfWord; i < length; i++)
+                    {
+                        if (Durability > 0)
+                        {
+                            sentence[i] = ' ';
+                            Durability--;
+                        }
+                        else
+                        {
+                            i = length;
+                        }
+                    }
+                    paper.Text = sentence.ToString();
                 }
-                paper.Text = sentence.ToString();
             }
             return paper; 
         }

@@ -8,6 +8,7 @@ namespace PencilKataUnitTests
         private Pencil pencil;
         private Paper paper;
         private const string genericTestSentence = "This is a test sentence";
+        private const string testSentenceConcatonated = " and this is a second sentence";
         private const string testSentenceDullPencil = "This is a test sent    ";
         private const string testSentenceWithSpace = "This is a      sentence";
         private const string testSentenceWithSpecialCharacters = "This is a rober@entence";
@@ -31,6 +32,19 @@ namespace PencilKataUnitTests
 
             // Assert
             Assert.AreEqual(genericTestSentence, paper.Text, "The text of the paper should match the constant testSentence");
+        }
+
+        [Test]
+        public void TestPencilWriteAllowsConcatentation()
+        {
+            // Arrange
+
+            // Act
+            paper = pencil.Write(genericTestSentence, paper);
+            paper = pencil.Write(testSentenceConcatonated, paper);
+
+            // Assert
+            Assert.AreEqual(genericTestSentence + testSentenceConcatonated, paper.Text, "The text of the paper should match the constant testSentence + testSentenceConcatonated");
         }
 
         [Test]
