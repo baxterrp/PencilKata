@@ -11,6 +11,7 @@ namespace PencilKataUnitTests
         private Paper paper;
         private Pencil pencil;
         private const string testSentence = "This is a test sentence";
+        private const string testWithEraserDegragation = "This is a t    sentence";
         private const string testSentenceWithWhiteSpace = "This is a      sentence";
         private const string testWord = "test";
         private const int pencilDurability = 50;
@@ -59,6 +60,20 @@ namespace PencilKataUnitTests
 
             // Assert
             Assert.AreEqual(testSentence, paper.Text);
+        }
+
+        [Test]
+        public void TestEraserStopsErasingMidWordIfZeroDurability()
+        {
+            // Arrange
+            eraser.Durability = 3;
+
+            // Act
+            paper.Text = pencil.Write(testSentence);
+            paper.Text = eraser.Erase(testWord, paper.Text);
+
+            // Assert
+            Assert.AreEqual(testWithEraserDegragation, paper.Text);
         }
     }
 }
