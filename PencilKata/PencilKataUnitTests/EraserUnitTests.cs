@@ -34,7 +34,7 @@ namespace PencilKataUnitTests
             paper.Text = eraser.Erase(testWord, paper.Text);
 
             // Assert
-            Assert.AreEqual(testSentenceWithWhiteSpace, paper.Text);
+            Assert.AreEqual(testSentenceWithWhiteSpace, paper.Text, "Test sentence should match paper text, eraser should remove entered word");
         }
 
         [Test]
@@ -45,7 +45,7 @@ namespace PencilKataUnitTests
             paper.Text = eraser.Erase(testWord, paper.Text);
 
             // Assert
-            Assert.AreEqual(eraserDurability - testWord.Length, eraser.Durability);
+            Assert.AreEqual(eraserDurability - testWord.Length, eraser.Durability, "The erase should lose durability for each letter");
         }
 
         [Test]
@@ -59,7 +59,7 @@ namespace PencilKataUnitTests
             paper.Text = eraser.Erase(testWord, paper.Text);
 
             // Assert
-            Assert.AreEqual(testSentence, paper.Text);
+            Assert.AreEqual(testSentence, paper.Text, "The test sentence and text of paper should match, no erase functionality invoked if zero durability");
         }
 
         [Test]
@@ -73,7 +73,7 @@ namespace PencilKataUnitTests
             paper.Text = eraser.Erase(testWord, paper.Text);
 
             // Assert
-            Assert.AreEqual(testWithEraserDegragation, paper.Text);
+            Assert.AreEqual(testWithEraserDegragation, paper.Text, "Text should match the test sentence, eraser should remove text from the right");
         }
     }
 }

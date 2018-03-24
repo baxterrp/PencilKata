@@ -27,9 +27,9 @@ namespace Domain.Classes
                 int firstIndexOfWord = input.IndexOf(word);
                 if (firstIndexOfWord != -1)
                 {
-                    int length = firstIndexOfWord + word.Length;
+                    int length = firstIndexOfWord + word.Length - 1;
                     StringBuilder sentence = new StringBuilder(input);
-                    for (var i = firstIndexOfWord; i < length; i++)
+                    for (var i = length; i >= firstIndexOfWord; i--)
                     {
                         if (Durability > 0)
                         {
@@ -38,7 +38,7 @@ namespace Domain.Classes
                         }
                         else
                         {
-                            i = length;
+                            i = firstIndexOfWord - 1;
                         }
                     }
                     return sentence.ToString();

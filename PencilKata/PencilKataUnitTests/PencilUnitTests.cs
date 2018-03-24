@@ -68,7 +68,7 @@ namespace PencilKataUnitTests
             paper.Text = pencil.Write(genericTestSentence);
 
             // Assert
-            Assert.AreEqual(testSentenceDullPencil, paper.Text);
+            Assert.AreEqual(testSentenceDullPencil, paper.Text, "test sentence should match paper text, no letters shown if pencil durability is zero");
         }
 
         [Test]
@@ -79,7 +79,7 @@ namespace PencilKataUnitTests
             pencil.Sharpen();
 
             // Assert
-            Assert.AreEqual(pencil.MaxDurability, pencil.CurrentDurability);
+            Assert.AreEqual(pencil.MaxDurability, pencil.CurrentDurability, "Pencil durability should match max durability after sharpened");
         }
 
         [Test]
@@ -89,7 +89,7 @@ namespace PencilKataUnitTests
             pencil.Sharpen();
 
             // Assert
-            Assert.AreEqual(pencilLength - 1, pencil.Length);
+            Assert.AreEqual(pencilLength - 1, pencil.Length, "The pencil should lose 1 durabilty after each sharpening");
         }
 
         [Test]
@@ -100,7 +100,7 @@ namespace PencilKataUnitTests
             paper.Text = pencil.Edit("test", paper.Text);
 
             // Assert
-            Assert.AreEqual(genericTestSentence, paper.Text);
+            Assert.AreEqual(genericTestSentence, paper.Text, "Test sentence should match paper text, edit should add word to first blank area in sentence");
         }
 
         [Test]
@@ -111,7 +111,8 @@ namespace PencilKataUnitTests
             paper.Text = pencil.Edit("robert", paper.Text);
 
             // Assert
-            Assert.AreEqual(testSentenceWithSpecialCharacters, paper.Text);
+            Assert.AreEqual(testSentenceWithSpecialCharacters, paper.Text, 
+                "Test sentence should match paper text, @ symbol should replace any non-whitespace characters if word overlaps existing characters");
         }
     }
 }
