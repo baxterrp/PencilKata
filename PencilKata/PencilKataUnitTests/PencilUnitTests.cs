@@ -33,7 +33,7 @@ namespace PencilKataUnitTests
         }
 
         [Test]
-        public void TestPencilWriteAllowsConcatentation()
+        public void TestPencilWriteAllowsConcatenation()
         {
             // Act
             paper.Text += pencil.Write(genericTestSentence);
