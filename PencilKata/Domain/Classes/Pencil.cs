@@ -67,7 +67,7 @@ namespace Domain.Classes
                 if (CurrentDurability > 0)
                 {
                     sentence[i] = char.IsWhiteSpace(sentence[i]) ? word[wordCounter] : '@';
-                    DegregradePencil(sentence[i]);
+                    DegradePencil(sentence[i]);
                     wordCounter++;
                 }
                 else
@@ -93,7 +93,7 @@ namespace Domain.Classes
                 {
                     if (CurrentDurability > decimal.Zero)
                     {
-                        DegregradePencil(sentence[i]);
+                        DegradePencil(sentence[i]);
                     }
                     else
                     {
@@ -109,7 +109,7 @@ namespace Domain.Classes
         /// Lowers durabilty of pencil upon use
         /// </summary>
         /// <param name="letter">the current letter being written</param>
-        private void DegregradePencil(char letter)
+        private void DegradePencil(char letter)
         {
             if (char.IsUpper(letter))
             {
