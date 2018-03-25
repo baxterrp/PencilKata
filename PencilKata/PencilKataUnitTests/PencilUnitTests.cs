@@ -107,10 +107,10 @@ namespace PencilKataUnitTests
         public void TestEditDegragradesPencil()
         {
             // Arrange
+            paper.Text += pencil.Write(testSentenceWithSpace);
             int expectedDurability = pencil.CurrentDurability - 4;
 
             // Act
-            paper.Text += pencil.Write(testSentenceWithSpace);
             paper.Text = pencil.Edit("test", paper.Text);
 
             // Assert

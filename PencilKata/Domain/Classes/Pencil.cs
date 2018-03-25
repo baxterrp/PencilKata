@@ -64,8 +64,16 @@ namespace Domain.Classes
 
             for (var i = firstDoubleSpace; i < length; i++)
             {
-                sentence[i] = char.IsWhiteSpace(sentence[i]) ? word[wordCounter] : '@';
-                wordCounter++;
+                if (CurrentDurability > 0)
+                {
+                    sentence[i] = char.IsWhiteSpace(sentence[i]) ? word[wordCounter] : '@';
+                    DegregradePencil(sentence[i]);
+                    wordCounter++;
+                }
+                else
+                {
+                    i = length;
+                }
             }
             return sentence.ToString();
         }
@@ -85,14 +93,7 @@ namespace Domain.Classes
                 {
                     if (CurrentDurability > decimal.Zero)
                     {
-                        if (char.IsUpper(sentence[i]))
-                        {
-                            CurrentDurability -= 2;
-                        }
-                        else
-                        {
-                            CurrentDurability--;
-                        }
+                        DegregradePencil(sentence[i]);
                     }
                     else
                     {
@@ -102,6 +103,22 @@ namespace Domain.Classes
             }
 
             return sentence.ToString();
+        }
+
+        /// <summary>
+        /// Lowers durabilty of pencil upon use
+        /// </summary>
+        /// <param name="letter">the current letter being written</param>
+        private void DegregradePencil(char letter)
+        {
+            if (char.IsUpper(letter))
+            {
+                CurrentDurability -= 2;
+            }
+            else
+            {
+                CurrentDurability--;
+            }
         }
     }
 }
