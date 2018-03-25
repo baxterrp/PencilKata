@@ -104,6 +104,23 @@ namespace PencilKataUnitTests
         }
 
         [Test]
+        public void TestEditDegragradesPencil()
+        {
+            // Arrange
+            int expectedDurability = pencil.CurrentDurability - 4;
+
+            // Act
+            paper.Text += pencil.Write(testSentenceWithSpace);
+            paper.Text = pencil.Edit("test", paper.Text);
+
+            // Assert
+            Assert.AreEqual(pencil.CurrentDurability, expectedDurability, "The pencil should lose 4 durabilty, 1 for each character in 'test'");
+
+            // Assert
+
+        }
+
+        [Test]
         public void TestPencilWritesSpecialCharacterIfNoFreeWhiteSpace()
         {
             // Act
